@@ -1,7 +1,7 @@
-## 🚀 Google Drive Clone (Full-Stack File Storage System)
+# 🚀 Google Drive Clone (Full-Stack File Storage System)
 A secure, cloud-based file storage application built to replicate core Google Drive functionality, enabling users to manage, upload, and download files and folders.
 
-# ✨ Features
+## ✨ Features
 User Authentication: Secure user registration and login using JWTs and bcrypt.js.
 
 File CRUD: Upload, delete, and download files with size restrictions (max 10MB).
@@ -16,7 +16,7 @@ Responsive UI: Clean, modern interface built with React and custom SCSS mixins f
 
 State Management: Global state management handled via React Context API (implied) and component-level state.
 
-# 🛠️ Tech Stack
+## 🛠️ Tech Stack
 This project is built using a modern full-stack architecture:
 
 Frontend
@@ -39,7 +39,7 @@ JWT & bcrypt	Secure authentication and password hashing.
 External Services
 Cloudinary: Primary file storage and CDN delivery.
 
-# ⚙️ Setup and Installation
+## ⚙️ Setup and Installation
 Prerequisites
 Node.js (v18+)
 
@@ -73,7 +73,7 @@ npm install
 npm run dev
 The application will typically be accessible at http://localhost:5173.
 
-# 💡 Key Code Highlights
+## 💡 Key Code Highlights
 Forced File Download Logic
 The backend dynamically modifies the Cloudinary URL to ensure documents like PDFs are downloaded instead of being viewed inline:
 
