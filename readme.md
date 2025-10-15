@@ -1,51 +1,104 @@
-# Project Name: Google drive clone(A MERN stack project)
+## 🚀 Google Drive Clone (Full-Stack File Storage System)
+A secure, cloud-based file storage application built to replicate core Google Drive functionality, enabling users to manage, upload, and download files and folders.
 
-The project description goes here.
+# ✨ Features
+User Authentication: Secure user registration and login using JWTs and bcrypt.js.
 
-## Table of Contents
+File CRUD: Upload, delete, and download files with size restrictions (max 10MB).
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
-- [License](#license)
+Folder Management: Create and organize files within dedicated folders.
 
-## Introduction
-The Project is a working model clone of Google drive where a your data can be stored.
+Cloud Storage: Integration with Cloudinary for scalable and efficient file hosting and delivery.
 
-## Features
+Forced Downloads: Backend logic to enforce file downloads (even for PDFs) using Cloudinary's fl_attachment flag.
 
-List the key features of your project, highlighting what makes it useful and unique.
+Responsive UI: Clean, modern interface built with React and custom SCSS mixins for mobile support.
 
-## Getting Started
+State Management: Global state management handled via React Context API (implied) and component-level state.
 
-### Prerequisites
- - You must have vite globally installed to checkout the frontend part of the project.
-   Do it according to below steps given.
+# 🛠️ Tech Stack
+This project is built using a modern full-stack architecture:
 
-### Installation
- Provided are step-by-step instructions on how to install and set up your project. 
+Frontend
+Technology	Description
+React	Core library for building the user interface.
+Vite	Fast build tool and development server.
+Axios	HTTP client for API communication.
+React Router	Handling client-side routing and URL parameters (folderId).
+Sass/SCSS	Styling with custom mixins (@mixin mobile) for responsiveness.
+React Toastify	Notifications for user feedback (uploads, deletions, downloads).
 
-# Installation steps:
+Backend
+Technology	Description
+Node.js	Runtime environment.
+Express.js	Web application framework for building REST APIs.
+MongoDB	NoSQL database for storing user, folder, and file metadata.
+Mongoose	MongoDB object data modeling (ODM) for Node.js.
+JWT & bcrypt	Secure authentication and password hashing.
 
-- Step 1: Install vite globally as it uses vite for frontend. You can use the following command:
-  npm install -g create-vite
+External Services
+Cloudinary: Primary file storage and CDN delivery.
 
-- Step 2: After installing Vite globally, you should be able to use the vite command in any directory on your system.
-  To do this, navigate to your project directory and run:
-  Using npm:
-  npm install --save-dev vite
-  
-- Step 3: After installing Vite locally in your project, you can use it by running the Vite development script defined in your project's package.json.     
-  This script is typically named "dev" or "serve." as I have a "dev" script in my package.json, you can start the development server like this:
-  Using npm:
-  npm run dev
+# ⚙️ Setup and Installation
+Prerequisites
+Node.js (v18+)
 
-- Step 4: If the "dev" script starts a development server, you can typically access the application in a web browser by going to the specified URL, often  
-          http://localhost:port (e.g., http://localhost:3000). The exact URL will depend on project's configuration.
-   
-- And here you can opt for frontend and backend servers of the project to run on your local server.
+MongoDB Instance (Local or Atlas)
+
+Cloudinary Account (API Key, Secret, and Cloud Name)
+
+Steps
+Clone the Repository:
+
+Bash
+
+git clone <repository-url>
+cd google-drive-clone
+Backend Setup:
+
+Bash
+
+cd backend
+npm install
+Create a .env file in the /backend directory and add your environment variables:
+
+PORT = 5000
+MONGO = mongodb+srv://root:root@cluster0.mvhavn8.mongodb.net/
+KEY = drivesecurekey
+
+Frontend Setup:
+
+cd frontend
+npm install
+npm run dev
+The application will typically be accessible at http://localhost:5173.
+
+# 💡 Key Code Highlights
+Forced File Download Logic
+The backend dynamically modifies the Cloudinary URL to ensure documents like PDFs are downloaded instead of being viewed inline:
+
+JavaScript
+
+// /backend/controller/file.js
+// ...
+let fileUrl = fileData.file;
+const uploadPath = '/upload/';
+
+if (fileUrl.includes(uploadPath)) {
+    // Inserts 'fl_attachment/' into the Cloudinary URL path
+    const index = fileUrl.indexOf(uploadPath) + uploadPath.length;
+    fileUrl = fileUrl.slice(0, index) + 'fl_attachment/' + fileUrl.slice(index);
+}
+
+return res.redirect(fileUrl); // Forces browser to download
+Frontend Download Trigger
+The React component initiates the download by opening the backend route, which handles the secure redirect:
+
+JavaScript
+
+// /frontend/src/components/File.jsx
+const handleDownload = (fileId, fileName) => {
+    const downloadUrl = `${url}/files/downloadFile/${fileId}`;
+    window.open(downloadUrl, '_blank');
+    // Toast notification for user feedback...
+};
