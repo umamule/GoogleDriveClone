@@ -1,0 +1,44 @@
+@import "../style.scss";
+
+.myDrive{
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    @include mobile{
+        gap: 1rem;
+        padding: 0.5rem;
+        
+       
+    }
+    .dropDown{
+        display: flex;
+        gap: 1rem;
+
+        p{
+            border: 1px solid grey;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            &:hover{
+                background-color: rgba(128, 128, 128, 0.154);
+            }
+
+            @include mobile{
+            
+               display: none;
+               
+            }
+        }
+    }
+    .files{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+      
+    }
+}

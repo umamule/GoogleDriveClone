@@ -1,0 +1,168 @@
+@import "../style.scss";
+
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 2rem;
+    @include mobile{
+       display: none;
+       
+    }
+    .new{
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        padding: 1rem;
+        cursor: pointer;
+        background-color: #fff;
+        width: 6rem;
+        justify-content: center;
+        border-radius: 0.5rem;
+
+        &:hover{
+            background-color: rgba(135, 207, 235, 0.123);
+        }
+    }
+
+    .container{
+        background-color: #fff;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        overflow: hidden;
+        display: flex;
+        z-index: 1;
+        flex-direction: column;
+        width: 15%;
+        border-radius: 10px;
+        position: absolute;
+        .item{
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            overflow: hidden;
+            cursor: pointer;
+
+            &:hover{
+                background-color: rgba(128, 128, 128, 0.299);
+                
+            }
+           
+
+            
+        }
+        .inactive{
+            display: none;
+        }
+        .line{
+            border-top: 1px solid grey;
+            margin: 0.2rem 0;
+        }
+        
+    }
+    .inactives{
+        display: none;
+    }
+    .options{
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        .icons{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            gap: 1rem;
+            padding: 0.6rem;
+            &:hover{
+                background-color: rgba(128, 128, 128, 0.181);
+                border-radius: 5rem;
+            }
+            &:active{
+                background-color: rgba(135, 207, 235, 0.751);
+                border-radius: 5rem;
+            }
+        }
+    }
+    
+}
+
+.newFolder{
+    
+    
+    
+    .container{
+       position: fixed;
+       top: 40%;
+       right: 50%;
+      padding: 2rem;
+      display: flex;
+      width: max-content;
+      @include mobile{
+        
+        top:30%;
+        right:10%;
+        padding: 1rem;
+       
+    }
+      
+      p{
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        @include mobile{
+           font-size: 1rem;
+           
+        }
+      }
+      input{
+        padding: 1rem;
+        margin-bottom: 1rem;
+        @include mobile{
+            margin-bottom: 0.2rem;
+            padding: 0.5rem;
+           
+        }
+        
+      }
+      .btn{
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: center;
+        button{
+            padding: 0.5rem;
+            border: none;
+            color: blue;
+            background-color: transparent;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        input{
+            margin-top: 0.8rem;
+            border: none;
+            color: blue;
+            background-color: transparent;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+            &:hover{
+                background-color: rgba(128, 128, 128, 0.212);
+                border-radius: 1rem;
+            }
+            @include mobile{
+                margin-top: 0.1rem;
+               
+            }
+            
+
+        }
+      }
+    }
+}
+
+
+
+
