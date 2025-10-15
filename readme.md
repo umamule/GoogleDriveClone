@@ -63,10 +63,14 @@ npm install
 Create a .env file in the /backend directory and add your environment variables:
 
 PORT = 5000
+
 MONGO = mongodb+srv://root:root@cluster0.mvhavn8.mongodb.net/
+
 KEY = drivesecurekey
 
+
 Frontend Setup:
+
 
 cd frontend
 npm install
